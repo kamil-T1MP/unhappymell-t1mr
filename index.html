@@ -9,28 +9,66 @@
 </head>
 <body>
 
+<!-- ================= ЗАСТАВКА ================= -->
 <div class="splash" id="splash">
-  <div class="splash-stars"></div>
+  <div class="splash-glow"></div>
   <div class="splash-center">
+
+    <div class="splash-top">unhappymell <span>football</span></div>
+
     <div class="starball">
-      <div class="starball-layer l1"></div>
-      <div class="starball-layer l2"></div>
-      <div class="starball-core"></div>
+      <svg viewBox="0 0 200 200" class="starball-svg" aria-hidden="true">
+        <defs>
+          <path id="star" d="M0,-20 L5,-6.88 L19.02,-6.18 L8.08,2.63 L11.76,16.18 L0,8.5 L-11.76,16.18 L-8.08,2.63 L-19.02,-6.18 L-5,-6.88 Z"/>
+          <radialGradient id="sphere" cx="38%" cy="30%" r="74%">
+            <stop offset="0%" stop-color="#ffffff"/>
+            <stop offset="55%" stop-color="#f1f3f8"/>
+            <stop offset="100%" stop-color="#c3cad8"/>
+          </radialGradient>
+          <clipPath id="ballClip"><circle cx="100" cy="100" r="92"/></clipPath>
+        </defs>
+
+        <circle cx="100" cy="100" r="92" fill="url(#sphere)"/>
+
+        <g clip-path="url(#ballClip)" fill="#14224a">
+          <use href="#star" transform="translate(100,100) scale(1.02)"/>
+          <use href="#star" transform="translate(100,142) scale(.74)" opacity=".92"/>
+          <use href="#star" transform="translate(60.1,113) scale(.74)" opacity=".92"/>
+          <use href="#star" transform="translate(75.3,66) scale(.74)" opacity=".92"/>
+          <use href="#star" transform="translate(124.7,66) scale(.74)" opacity=".92"/>
+          <use href="#star" transform="translate(139.9,113) scale(.74)" opacity=".92"/>
+
+          <use href="#star" transform="translate(142.3,158.2) scale(.56)" opacity=".8"/>
+          <use href="#star" transform="translate(57.7,158.2) scale(.56)" opacity=".8"/>
+          <use href="#star" transform="translate(31.5,77.7) scale(.56)" opacity=".8"/>
+          <use href="#star" transform="translate(100,28) scale(.56)" opacity=".8"/>
+          <use href="#star" transform="translate(168.5,77.7) scale(.56)" opacity=".8"/>
+
+          <use href="#star" transform="translate(184,100) scale(.32)" opacity=".65"/>
+          <use href="#star" transform="translate(125.9,179.9) scale(.32)" opacity=".65"/>
+          <use href="#star" transform="translate(32.1,149.4) scale(.32)" opacity=".65"/>
+          <use href="#star" transform="translate(32.1,50.6) scale(.32)" opacity=".65"/>
+          <use href="#star" transform="translate(125.9,20.1) scale(.32)" opacity=".65"/>
+        </g>
+
+        <circle cx="100" cy="100" r="92" fill="none" stroke="#14224a" stroke-width="1.4" opacity=".55"/>
+      </svg>
     </div>
-    <h1 class="splash-logo"><span>Т</span><span>1</span><span>М</span><span>Р</span></h1>
-    <p class="splash-sub">ЛИГА ЧЕМПИОНОВ · 2026/27</p>
-    <button class="splash-btn" id="enterBtn">ВОЙТИ</button>
-    <p class="splash-hint">нажми, чтобы начать</p>
+
+    <h1 class="splash-logo">Т1МР</h1>
+    <p class="splash-sub">Лига Чемпионов · 2026/27</p>
+    <button class="splash-btn" id="enterBtn">Войти</button>
   </div>
 </div>
 
 <audio id="anthem" src="anthem.mp3" preload="none"></audio>
 
+<!-- ================= ХЕДЕР ================= -->
 <header class="site-head">
   <div class="head-inner">
     <a class="brand" href="#top">
+      <span class="brand-top">unhappymell <span>football</span></span>
       <span class="brand-mark">Т1МР</span>
-      <span class="brand-sub">Champions League 2026/27</span>
     </a>
     <nav class="nav">
       <a href="#table">Таблица</a>
@@ -43,8 +81,8 @@
 <main id="top">
 
   <section class="hero">
-    <span class="hero-badge">СЕЗОН 2026/27</span>
-    <h1 class="hero-title">ОБЩИЙ ЭТАП</h1>
+    <span class="hero-badge">Сезон 2026/27</span>
+    <h1 class="hero-title">Общий этап</h1>
     <p class="hero-sub">36 клубов · 8 туров · одна таблица</p>
     <div class="hero-stats">
       <div class="hs"><span class="hs-num">36</span><span class="hs-lbl">клубов</span></div>
@@ -56,9 +94,16 @@
 
   <section id="table" class="block">
     <div class="block-head">
-      <h2>Таблица</h2>
+      <div class="block-head-row">
+        <h2>Таблица</h2>
+        <div class="ctrl-bar">
+          <span class="data-chip" id="dataChip"><i></i> проверка данных</span>
+          <button class="ghost-btn" id="toggleOut" type="button">Показать вылетевших</button>
+        </div>
+      </div>
       <p class="block-sub">Нажми на клуб — откроется сводка. Основные игроки подсвечены золотым.</p>
     </div>
+
     <div class="table-wrap">
       <table class="ltable">
         <thead>
@@ -93,7 +138,7 @@
   <section id="mapSection" class="block">
     <div class="block-head">
       <h2>Карта Европы</h2>
-      <p class="block-sub">Страны с клубами подсвечены золотым. Приблизь карту — появятся иконки клубов.</p>
+      <p class="block-sub">Приблизь карту — появятся иконки клубов.</p>
     </div>
     <div class="map-holder">
       <div id="map"></div>
@@ -104,8 +149,8 @@
 </main>
 
 <footer class="site-foot">
-  <p>Т1МР · Лига Чемпионов 2026/27</p>
-  <p class="foot-sub">Авторский проект. Данные редактируются в файле <code>clubs.js</code>.</p>
+  <p class="foot-brand">unhappymell <span>football</span></p>
+  <p class="foot-mark">Т1МР · Лига Чемпионов 2026/27</p>
 </footer>
 
 <div class="modal-overlay" id="clubModal">
