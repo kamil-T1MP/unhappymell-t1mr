@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Т1МР — Лига Чемпионов 2026/27</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+</head>
+<body>
+
+<div class="splash" id="splash">
+  <div class="splash-stars"></div>
+  <div class="splash-center">
+    <div class="starball">
+      <div class="starball-layer l1"></div>
+      <div class="starball-layer l2"></div>
+      <div class="starball-core"></div>
+    </div>
+    <h1 class="splash-logo"><span>Т</span><span>1</span><span>М</span><span>Р</span></h1>
+    <p class="splash-sub">ЛИГА ЧЕМПИОНОВ · 2026/27</p>
+    <button class="splash-btn" id="enterBtn">ВОЙТИ</button>
+    <p class="splash-hint">нажми, чтобы начать</p>
+  </div>
+</div>
+
+<audio id="anthem" src="anthem.mp3" preload="none"></audio>
+
+<header class="site-head">
+  <div class="head-inner">
+    <a class="brand" href="#top">
+      <span class="brand-mark">Т1МР</span>
+      <span class="brand-sub">Champions League 2026/27</span>
+    </a>
+    <nav class="nav">
+      <a href="#table">Таблица</a>
+      <a href="#clubs">Клубы</a>
+      <a href="#mapSection">Карта</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <span class="hero-badge">СЕЗОН 2026/27</span>
+    <h1 class="hero-title">ОБЩИЙ ЭТАП</h1>
+    <p class="hero-sub">36 клубов · 8 туров · одна таблица</p>
+    <div class="hero-stats">
+      <div class="hs"><span class="hs-num">36</span><span class="hs-lbl">клубов</span></div>
+      <div class="hs"><span class="hs-num">8</span><span class="hs-lbl">туров</span></div>
+      <div class="hs"><span class="hs-num">144</span><span class="hs-lbl">матча</span></div>
+      <div class="hs"><span class="hs-num">24</span><span class="hs-lbl">выходят дальше</span></div>
+    </div>
+  </section>
+
+  <section id="table" class="block">
+    <div class="block-head">
+      <h2>Таблица</h2>
+      <p class="block-sub">Нажми на клуб — откроется сводка. Основные игроки подсвечены золотым.</p>
+    </div>
+    <div class="table-wrap">
+      <table class="ltable">
+        <thead>
+          <tr>
+            <th>#</th><th>Клуб</th><th class="hide-sm">Страна</th>
+            <th title="Игры">И</th><th title="Победы">В</th><th title="Ничьи">Н</th>
+            <th title="Поражения">П</th><th title="Мячи">М</th><th>О</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+    </div>
+    <div class="legend">
+      <span><i class="dot dot-1"></i> 1–8 — напрямую в 1/8</span>
+      <span><i class="dot dot-2"></i> 9–24 — стыковые матчи</span>
+      <span><i class="dot dot-3"></i> 25–36 — вылет</span>
+    </div>
+  </section>
+
+  <section id="clubs" class="block">
+    <div class="block-head">
+      <h2>Поиск клуба</h2>
+      <p class="block-sub">Введи название — варианты появятся сразу, как в поисковике.</p>
+    </div>
+    <div class="search-wrap">
+      <input id="clubSearch" class="search-input" type="text"
+             placeholder="Введи клуб: реал, бавария, милан…" autocomplete="off" spellcheck="false">
+      <ul class="search-results" id="searchResults"></ul>
+    </div>
+  </section>
+
+  <section id="mapSection" class="block">
+    <div class="block-head">
+      <h2>Карта Европы</h2>
+      <p class="block-sub">Страны с клубами подсвечены золотым. Приблизь карту — появятся иконки клубов.</p>
+    </div>
+    <div class="map-holder">
+      <div id="map"></div>
+      <div class="map-hint" id="mapHint">🔍 приблизь карту, чтобы увидеть клубы</div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-foot">
+  <p>Т1МР · Лига Чемпионов 2026/27</p>
+  <p class="foot-sub">Авторский проект. Данные редактируются в файле <code>clubs.js</code>.</p>
+</footer>
+
+<div class="modal-overlay" id="clubModal">
+  <div class="modal-box" id="clubModalBox">
+    <button class="modal-close" id="modalClose">&times;</button>
+    <div id="clubModalContent"></div>
+  </div>
+</div>
+
+<script src="clubs.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
